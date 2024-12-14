@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         Euler;
+}
+
+gradSchemes
+{
+    default         none;
+    limited         cellLimited Gauss linear 1;
+    grad(U)         $limited;
+    grad(p)         $limited;
+    grad(e)         $limited;
+    grad(nuTilda)   $limited;
+    grad(k)         $limited;
+    grad(omega)     $limited;
+    grad(epsilon)   $limited;
+    grad(K)         $limited;
+    grad(Phi)       cellLimited leastSquares 1;
+}
+
+divSchemes
+{
+    default         none;
+
+    upwind          Gauss upwind grad(U);
+    div(phi,U)      $upwind;
+
+    /*div(phi,k)       Gauss limitedLinear 1.0;
+    div(phi,omega)   Gauss limitedLinear 1.0;
+    div(phi,nuTilda) Gauss limitedLinear 1.0;
+
+    div(phi,e)      Gauss limitedLinear 1.0;
+    div(phi,K)      Gauss limitedLinear 1.0;
+    div(phi,Ekp)    Gauss limitedLinear 1.0;
+
+    div(phiv,p)     Gauss limitedLinear 1.0;
+    div(phid,p)     Gauss limitedLinear 1.0;*/
+    
+    
+    div(phi,k)       $upwind;
+    div(phi,omega)   $upwind;
+    div(phi,nuTilda) $upwind;
+
+    div(phi,e)      $upwind;
+    div(phi,K)      $upwind;
+    div(phi,Ekp)    $upwind;
+
+    div(phiv,p)     $upwind;
+    div(phid,p)     $upwind;
+
+    div(div(phi,U)) Gauss linear; //same
+    div(((rho*nuEff)*dev2(T(grad(U)))))    Gauss linear; // kepp same from here
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;
+    div(((rho*(thermo:mu|rho))*dev2(T(grad(U))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+wallDist
+{
+    method meshWave;
+}
+
+// ************************************************************************* //

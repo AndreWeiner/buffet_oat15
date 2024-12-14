@@ -1,0 +1,24 @@
+surface
+{
+    type            surfaces;
+    libs            (sampling);
+    writeControl    writeTime;
+    //writeControl    timeStep;
+
+    surfaceFormat   raw;
+    fields          (total(p)_coeff yPlus p rho T wallShearStress);
+
+    // interpolationScheme cellPoint;  //<- default
+
+    surfaces
+    {
+        airfoil
+        {
+            type            patch;
+            patches         (airfoil);
+            interpolate     true;
+            invariant       true;  // Unaffected by mesh motion
+            surfaceFormat   raw;
+        }
+    }
+}

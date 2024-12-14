@@ -1,0 +1,22 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+# mesh creation with blockMesh
+# runApplication blockMesh
+# decompose mesh
+runApplication decomposePar
+# distribute 0.orig directory to processor folders
+restore0Dir -processor
+# dummy file for post-processing
+touch para.foam
+# execute flow solver
+#cp system/controlDict_potential system/controlDict
+#runParallel potentialFoam -writePhi
+
+#cp system/controlDict_rhoPimple system/controlDict
+runParallel rhoPimpleFoam
+#rhoPimpleFoam -postProcess -func yPlus > log.yPlus
+#runApplication postProcess -func samplePwall
+

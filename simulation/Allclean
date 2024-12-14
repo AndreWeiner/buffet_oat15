@@ -1,0 +1,9 @@
+#!/bin/sh
+# . ../../functions
+
+# reset simulation
+rm -rf processor*
+rm log*
+rm -r postProcessing
+
+#------------------------------------------------------------------------------
