@@ -6,3 +6,7 @@ The steps to execute the setup are as follows:
 ```
 ./Allrun
 ```
+3. To generate plots for Skin friction and pressure coefficient, run the plotter.py script
+```
+python3 plotter.py
+```

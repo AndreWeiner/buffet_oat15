@@ -5,5 +5,5 @@
 rm -rf processor*
 rm log*
 rm -r postProcessing
-
+rm -r output
 #------------------------------------------------------------------------------

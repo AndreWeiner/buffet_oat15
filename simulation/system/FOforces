@@ -18,11 +18,22 @@ forces
     (
         airfoil
     );
-
+    alpha         -5.0; // angle of attack in degrees
+    unitVec_x         (1.0 0.0 0.0);
+    unitVec_z         (0.0 0.0 1.0);
+    // not to be changed
+    alpha         #eval{ degToRad($alpha) };
+    cos_alpha     #eval{ cos($alpha) };
+    sin_alpha     #eval{ sin($alpha) };
+    neg_sin_alpha #eval{ - $sin_alpha };
+    rot_matrix    ($cos_alpha 0.0 $sin_alpha 0.0 1.0 0.0 $neg_sin_alpha 0.0 $cos_alpha);
+    rotatedVec_x        #eval{ $[(tensor)rot_matrix] & $[(vector)unitVec_x] };
+    rotatedVec_z        #eval{ $[(tensor)rot_matrix] & $[(vector)unitVec_z] };
+ 
     CofR        (0 0 0);
-    liftDir     (0 1 0);
-    dragDir     (1 0 0);
-    pitchAxis   (0 0 1);
+    liftDir     $rotatedVec_z;
+    dragDir     $rotatedVec_x;
+    pitchAxis   (0 1 0);
     rhoInf      1.186;
     magUInf     246.96;
     lRef        0.15;
