@@ -6,9 +6,17 @@ cd "${0%/*}" || exit                                # Run from this directory
 # mesh creation with blockMesh
 # runApplication blockMesh
 # decompose mesh
+
+
 runApplication decomposePar
+
+
 # distribute 0.orig directory to processor folders
+
+
 restore0Dir -processor
+
+
 # dummy file for post-processing
 touch para.foam
 # execute flow solver

@@ -217,7 +217,7 @@ addLayersControls
 
         // Expansion factor for layer mesh
         //expansionRatio 1.0;
-        expansionRatio 1.1;
+        expansionRatio 1.18;
 
         // Wanted thickness of the layer furthest away from the wall.
         // If relativeSizes this is relative to undistorted size of cell
@@ -228,7 +228,8 @@ addLayersControls
         // Wanted thickness of the layer next to the wall.
         // If relativeSizes this is relative to undistorted size of cell
         // outside layer.
-        firstLayerThickness 0.3;
+        //firstLayerThickness 0.04;
+        firstLayerThickness 0.007;
 	//firstLayerThickness 0.002;	//reltive sizes false
 
         // Wanted overall thickness of layers.
@@ -255,7 +256,7 @@ addLayersControls
 
         stlSurface
         {
-            nSurfaceLayers 15;		
+            nSurfaceLayers 35;		
            
         }
 
@@ -274,11 +275,11 @@ addLayersControls
         // When not to extrude surface. 0 is flat surface, 90 is when two faces
         // are perpendicular
 	//mergePatchFacesAngle 45;
-        featureAngle 160;		//default
+        featureAngle 180;		//default
 	nOuterIter 5;
 
         // Stop layer growth on highly warped cells
-        maxFaceThicknessRatio 0.5;
+        maxFaceThicknessRatio 05;
 
     // Patch displacement
 
@@ -320,7 +321,7 @@ meshQualityControls
 {
     // Specify mesh quality constraints in separate dictionary so can
     // be reused (e.g. checkMesh -meshQuality)
-    #include "meshQualityDict"
+    #include "meshQualityDict_bl"
 
     // Optional : some meshing phases allow usage of relaxed rules.
     // See e.g. addLayersControls::nRelaxedIter.
@@ -367,6 +368,6 @@ writeFlags
 
 // Merge tolerance. Is fraction of overall bounding box of initial mesh.
 // Note: the write tolerance needs to be higher than this.
-mergeTolerance 1e-6;
+mergeTolerance 1e-7;
 
 // ************************************************************************* //

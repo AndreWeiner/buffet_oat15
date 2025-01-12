@@ -22,7 +22,7 @@ internalField   uniform $pOut;
 
 boundaryField
 {
-    /*outlet
+    outerBoundary
     {
         type            waveTransmissive;
         field           p;
@@ -31,13 +31,13 @@ boundaryField
         fieldInf        $pOut;
         lInf            1.1;
         value           uniform $pOut;
-    }*/
+    }
 
-    outerBoundary
+    /*outerBoundary
     {
         type            freestreamPressure;
         freestreamValue uniform $pOut;
-    }
+    }*/
 
     airfoil
     {

@@ -64,7 +64,7 @@ PIMPLE
     momentumPredictor   yes;
     transonic           yes;
     nOuterCorrectors    5;
-    nCorrectors         1;
+    nCorrectors         2;
     nNonOrthogonalCorrectors 1;
     consistent          yes;
     pMinFactor      0.1;

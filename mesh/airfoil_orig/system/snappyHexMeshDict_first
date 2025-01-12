@@ -188,7 +188,7 @@ addLayersControls
 
         // Expansion factor for layer mesh
         //expansionRatio 1.0;
-        expansionRatio 1.2;
+        expansionRatio 1.0;
 
         // Wanted thickness of the layer furthest away from the wall.
         // If relativeSizes this is relative to undistorted size of cell
@@ -199,7 +199,7 @@ addLayersControls
         // Wanted thickness of the layer next to the wall.
         // If relativeSizes this is relative to undistorted size of cell
         // outside layer.
-        firstLayerThickness 11;
+        firstLayerThickness 9;
 	//firstLayerThickness 0.002;	//reltive sizes false
 
         // Wanted overall thickness of layers.
@@ -226,7 +226,7 @@ addLayersControls
 
         cylinder
         {
-            nSurfaceLayers 1;		
+            nSurfaceLayers 3;		
            
         }
 

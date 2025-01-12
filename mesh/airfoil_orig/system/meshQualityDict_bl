@@ -33,7 +33,7 @@ maxInternalSkewness -1;
 maxConcave 80;
 
 //  Set to very negative number (e.g. -1E30) to disable.
-minVol 1e-6;
+minVol 1e-15;
 
 //- Minimum quality of the tet formed by the face-centre
 //  and variable base point minimum decomposition triangles and

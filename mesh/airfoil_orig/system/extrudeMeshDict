@@ -36,6 +36,6 @@ linearNormalCoeffs
 mergeFaces false;   //true;
 
 // Merge small edges. Fraction of bounding box.
-//mergeTol 0;
+mergeTol 1e-8;
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
