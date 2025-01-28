@@ -9,6 +9,7 @@ from flow_conditions import *
 mpl.rcParams['figure.dpi'] = 160
 os.makedirs("output", exist_ok = True)
 
+conv_time = CHORD/U_INF
 
 fig, ax = plt.subplots(figsize=(6, 4))
 lw = 1.5
@@ -16,7 +17,7 @@ ms = 15
 
 cwd = os.getcwd()
 path_surf = os.path.join(cwd, "postProcessing/surface/")
-data_cp = average_surface_data(path_surf, "total(p)_coeff_airfoil.raw", 0.001, 0.11, symmetric=False)
+data_cp = average_surface_data(path_surf, "total(p)_coeff_airfoil.raw", 0.001, 0.0031, symmetric=False)
 
 ax.plot(data_cp[0], data_cp[2], c="C0", ls="-")
 ax.plot(data_cp[1], data_cp[3], c="C0", ls="--")
@@ -29,7 +30,7 @@ fig.gca().invert_yaxis()
 
 
 
-every = 100
+every = 1
 path = os.path.join(cwd, "postProcessing/forces/")
 t, cd, cl = fetch_force_coefficients(path)
 ti, cl = interpolate_uniform_1D(t[::every], cl[::every], 10000)
@@ -37,19 +38,19 @@ _, cd = interpolate_uniform_1D(t[::every], cd[::every], 10000)
 
 fig1, (ax1, ax2) = plt.subplots(2, 1, figsize=(6, 4))
 
-ax1.plot(ti, cd, lw=1)
-ax2.plot(ti, cl, lw=1)
+ax1.plot(ti/conv_time, cd, lw=1)
+ax2.plot(ti/conv_time, cl, lw=1)
 
 #ax1.set_ylim(-0.005, 0.05)
 ax1.set_ylabel(r"$c_d$")
 #ax2.set_xlim(ti["ref. 0"][0], ti_2D["ref. 0"][-1])
-ax2.set_ylim(0.8, 1.2)
+#ax2.set_ylim(0.8, 1.1)
 ax2.set_xlabel(r"$t$ in $s$")
 ax2.set_ylabel(r"$c_l$")
 #plt.show()
 fig1.suptitle("Lift and drag coefficent")
 
-data_cf = average_surface_data(path_surf, "wallShearStress_airfoil.raw", 0.001, 0.11, symmetric=False)
+data_cf = average_surface_data(path_surf, "wallShearStress_airfoil.raw", 0.001, 0.0031, symmetric=False)
 fig2, ax3 = plt.subplots(figsize=(6, 4))
 
 ax3.plot(data_cf[0], data_cf[2]/(-0.5*U_INF**2), c="C0", ls="-")

@@ -30,26 +30,12 @@ geometry
     }
 
 
-    shockBox
+    shockBox1
     {
         type searchableBox;
-        min (0.02 -1 0.0);
-        max (0.1  1 0.1);
+        min (0.04 -1 0.0);
+        max (0.17  1 0.03);
     }
-
-    trailingEdgeBox
-    {
-        type searchableBox;
-        min (0.14 -1 -0.05);
-        max (0.6  1 0.06);
-    }
-    boundaryBox
-    {
-        type searchableBox;
-        min (0.145 -1 -0.005);
-        max (0.155  1 0.005);
-    }
-};
 
 // Settings for the castellatedMesh generation.
 castellatedMeshControls
@@ -123,11 +109,11 @@ castellatedMeshControls
     refinementRegions
     {
 
-        /*shockBox
+        shockBox1
         {
             mode inside;   
-            levels ((1e15 3));  //1E15 4
-        }*/
+            levels ((2 2));  //1E15 4
+        }
 
         /*boundaryBox
         {

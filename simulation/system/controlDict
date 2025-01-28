@@ -53,7 +53,7 @@ maxCo           1.0;
 
 functions
 {
-    //#include "FOMachNo"
+    #include "FOMachNo"
     #include "FOyPlus"
     #include "FOforces"
     #include "FOpressure"

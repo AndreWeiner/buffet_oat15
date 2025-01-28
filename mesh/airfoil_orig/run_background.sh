@@ -51,7 +51,7 @@ rm -rf 0
 
 decomposePar
 
-foamJob -s -p snappyHexMesh -dict system/snappyHexMeshDict_third -parallel -overwrite
+foamJob -s -p snappyHexMesh -dict system/snappyHexMeshDict_third -parallel -overwrite | tee log.snappy_3
 reconstructParMesh -constant
 extrudeMesh -noFunctionObjects
 checkMesh -latestTime | tee log.checkmesh3D_3
@@ -83,7 +83,7 @@ rm -rf 0
 
 decomposePar
 
-foamJob -s -p snappyHexMesh -dict system/snappyHexMeshDict_fourth -parallel -overwrite
+foamJob -s -p snappyHexMesh -dict system/snappyHexMeshDict_fourth -parallel -overwrite | tee log.snappy_4
 reconstructParMesh -constant
 extrudeMesh -noFunctionObjects
 checkMesh -latestTime | tee log.checkmesh3D_4

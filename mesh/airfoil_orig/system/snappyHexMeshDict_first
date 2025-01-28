@@ -226,7 +226,7 @@ addLayersControls
 
         cylinder
         {
-            nSurfaceLayers 3;		
+            nSurfaceLayers 1;		
            
         }
 

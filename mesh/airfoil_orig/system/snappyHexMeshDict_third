@@ -29,12 +29,11 @@ geometry
         name stlSurface;
     }
 
-
     shockBox
     {
         type searchableBox;
-        min (0.02 -1 0.0);
-        max (0.1  1 0.14);
+        min (0.01 -1 0.0);
+        max (0.1  1 0.13);
     }
 
     trailingEdgeBox
@@ -144,9 +143,9 @@ castellatedMeshControls
 	    mode distance;
 	    levels
 	    (
-	         (0.025 5)
-		 (0.04 4)
-	         (0.075 3)
+	         (0.04 5)
+		 (0.06 4)
+		 (0.075 3)
 	    );
 	}
 
