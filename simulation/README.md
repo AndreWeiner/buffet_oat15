@@ -8,5 +8,5 @@ The steps to execute the setup are as follows:
 ```
 3. To generate plots for Skin friction and pressure coefficient, run the plotter.py script
 ```
-python3 plotter.py
+python3 plot.py
 ```
